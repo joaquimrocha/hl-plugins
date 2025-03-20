@@ -72,7 +72,7 @@ jobs:
           push: true
           pull: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ env.REGISTRY }}/joaquim-rocha/${{ env.IMAGE_NAME }}:${{ env.VERSION }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/joaquimrocha/${{ env.IMAGE_NAME }}:${{ env.VERSION }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.licenses=Apache-2.0
@@ -100,7 +100,7 @@ jobs:
           CHECKSUM: ${{ steps.build_tarball.outputs.checksum }}
         run: |
           PKG_FILE="${PLUGIN}/artifacthub-pkg.yml"
-          TAR_URL="https://github.com/joaquim-rocha/hl-plugins/releases/download/${PLUGIN}-${VERSION}/$(basename $TAR_PATH)"
+          TAR_URL="https://github.com/joaquimrocha/hl-plugins/releases/download/${PLUGIN}-${VERSION}/$(basename $TAR_PATH)"
           sed -i "s|^\(headlamp/plugin/archive-url:\).*|\1 \"$TAR_URL\"|g" "$PKG_FILE"
           sed -i "s|^\(headlamp/plugin/archive-checksum:\).*|\1 \"SHA256:$CHECKSUM\"|g" "$PKG_FILE"
 
