@@ -68,7 +68,7 @@ jobs:
         run: |
           docker buildx build \
           --build-arg PLUGIN=$PLUGIN \
-          -t $REGISTRY/headlamp-k8s/headlamp-plugin-$PLUGIN:$VERSION \
+          -t $REGISTRY/joaquim-rocha/headlamp-plugin-$PLUGIN:$VERSION \
           --push \
           .
 
@@ -91,7 +91,7 @@ jobs:
           CHECKSUM: ${{ steps.build_tarball.outputs.checksum }}
         run: |
           PKG_FILE="${PLUGIN}/artifacthub-pkg.yml"
-          TAR_URL="https://github.com/headlamp-k8s/plugins/releases/download/${PLUGIN}-${VERSION}/$(basename $TAR_PATH)"
+          TAR_URL="https://github.com/joaquim-rocha/hl-plugins/releases/download/${PLUGIN}-${VERSION}/$(basename $TAR_PATH)"
           sed -i "s|^\(headlamp/plugin/archive-url:\).*|\1 \"$TAR_URL\"|g" "$PKG_FILE"
           sed -i "s|^\(headlamp/plugin/archive-checksum:\).*|\1 \"SHA256:$CHECKSUM\"|g" "$PKG_FILE"
 
