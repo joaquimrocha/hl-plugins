@@ -72,12 +72,12 @@ jobs:
           push: true
           pull: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ env.REGISTRY }}/joaquimrocha/${{ env.IMAGE_NAME }}:${{ env.VERSION }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/joaquimrocha/${{ env.IMAGE_NAME }}:${{ env.VERSION }},${{ env.REGISTRY }}/joaquimrocha/${{ env.IMAGE_NAME }}:latest
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.licenses=Apache-2.0
           provenance: true
-          build-args: PLUGIN=${{ github.event.inputs.plugin }}
+          build-args: PLUGIN=${{ env.PLUGIN }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
